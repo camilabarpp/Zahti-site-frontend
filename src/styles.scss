@@ -1,1 +1,100 @@
-/* You can add global styles to this file, and also import other style files */
+@use "node_modules/@angular/material/index" as mat;
+@use 'color-palette';
+@use 'common';
+@use "sass:map";
+
+// Define as cores do tema
+$zahti-primary: mat.define-palette(color-palette.$custom-primary-color);
+$zahti-accent: mat.define-palette(color-palette.$custom-accent-color);
+$zahti-warn: mat.define-palette(color-palette.$custom-warn-color);
+
+// Define o tema com base nas cores padrão e na tipografia
+$zahti-theme: mat.define-light-theme((color: (primary: $zahti-primary,
+  accent: $zahti-accent,
+  warn: $zahti-warn,
+),
+  typography: common.$zahti-typography,
+));
+
+// Aplica a cor extra - Success
+$zahti-theme: common.apply-extra-colors($zahti-theme);
+
+//Generate theme
+@include common.create-theme($zahti-theme);
+
+
+// Declarações CSS Global
+
+* {
+  padding: 0;
+  font-family: roboto;
+  font-weight: 400;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.mat-caption {
+  text-transform: uppercase;
+}
+
+.color-primary {
+  color: mat.get-color-from-palette($zahti-primary);
+}
+
+.color-accent {
+  color: mat.get-color-from-palette($zahti-accent);
+}
+
+.color-warn {
+  color: mat.get-color-from-palette($zahti-warn);
+}
+
+.color-success {
+  color: mat.get-color-from-palette(mat.define-palette(color-palette.$custom-success-color));
+}
+
+.color-neutral {
+  color: #262626
+}
+
+.color-grey {
+  background-color: #F0F0F0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.background-color-accent {
+  background-color: mat.get-color-from-palette($zahti-accent);
+}
+
+//Estilos do choice
+.mat-chip.mat-standard-chip {
+  background-color: transparent;
+  color: mat.get-color-from-palette($zahti-primary);
+  border: 1px solid mat.get-color-from-palette($zahti-primary);
+}
+
+.disabled {
+  border: 1px solid mat.get-color-from-palette($zahti-primary);
+  color: black;
+}
+
+.mat-chip.mat-standard-chip:active {
+  border: 1px solid mat.get-color-from-palette($zahti-primary);
+}
+
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+  color: mat.get-color-from-palette($zahti-primary);
+  background-color: mat.get-color-from-palette($zahti-primary, 0.1);
+}
+

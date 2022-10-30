@@ -1,0 +1,43 @@
+<mat-toolbar color="{{color}}" fxLayoutAlign="center center">
+  <div fxFlex="85%">
+
+    <!--    DIV ESQUERDA-->
+    <div class="left-div" fxFlex="10%" fxLayoutAlign="start center">
+      <img class="logo-zahti" fxLayoutGap="20px" src="{{logo}}" alt="Logo Zahti">
+    </div>
+
+    <!--    DIV DIREITA-->
+    <div class="right-div" fxFlex="90%" fxLayoutAlign="start center">
+      <mat-form-field class="search-field" floatLabel="never">
+        <input matInput placeholder="Pesquisar">
+      </mat-form-field>
+      <app-shared-button fxHide.lt-sm fxShow class="search-button" text="Pesquisar" type="raised" color="accent">
+      </app-shared-button>
+
+      <app-shared-button fxHide.lt-sm fxShow class="wishList-button" text="Lista de Desejos" type="raised"
+        color="accent">
+      </app-shared-button>
+
+      <app-shared-button fxHide.lt-sm fxShow class="login-button" text="ENTRAR" type="raised" color="accent">
+      </app-shared-button>
+
+      <app-shared-button fxHide.gt-xs fxShow icon="menu" type="icon" color="accent" [matMenuTriggerFor]="menu">
+      </app-shared-button>
+
+      <mat-menu class="color-grey" #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>account_circle</mat-icon>
+          <span class="mat-body-2">Login</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>card_travel</mat-icon>
+          <span class="mat-body-2">Sobre</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>contact_support</mat-icon>
+          <span class="mat-body-2">Contato</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>

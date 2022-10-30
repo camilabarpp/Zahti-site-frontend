@@ -1,0 +1,38 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin mix-app-theme($app-theme) {
+  $primary: map-get($app-theme, primary);
+  $accent: map-get($app-theme, info);
+  $success: map-get($app-theme, success);
+  $error: map-get($app-theme, error);
+
+  // background nao selecionado.
+  .mat-slide-toggle-bar {
+    background-color: mat.get-color-from-palette($accent);
+    color: mat.get-color-from-palette($accent, default-contrast);
+  }
+
+  // background selecionado.
+  //.mat-button-toggle-checked.cdk-focused {
+  //  background-color: mat.get-color-from-palette($accent);
+  //  color: mat.get-color-from-palette($accent, default-contrast);
+  //}
+
+  // bolinha
+  .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: mat.get-color-from-palette($success);
+    color: mat.get-color-from-palette($success, default-contrast);
+  }
+
+  //bacgrkoud do selecionado
+  .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: mat.get-color-from-palette($primary);
+    color: mat.get-color-from-palette($primary, default-contrast);
+  }
+
+  .mat-button-toggle-checked {
+    background-color: mat.get-color-from-palette($accent);
+    color: mat.get-color-from-palette($accent, default-contrast);
+  }
+}
